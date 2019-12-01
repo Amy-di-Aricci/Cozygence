@@ -1,8 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-Vue.config.productionTip = false
+import VueGoogleCharts from 'vue-google-charts'
+import vuetify from './plugins/vuetify';
+
+Vue.config.productionTip = false;
+Vue.config.devtools = true;
+
+Vue.use(VueGoogleCharts);
 
 new Vue({
-  render: h => h(App),
+  vuetify,
+  render: h => h(App)
 }).$mount('#app')
