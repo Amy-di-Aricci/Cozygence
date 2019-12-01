@@ -13,20 +13,27 @@
         components: {
             GChart
         },
+        props:{
+            minValue: [Number, String],
+            maxValue: [Number, String],
+            width: [Number, String],
+            value: {type: Number, default: 0},
+            variableName: String,
+        },
         data () {
             return {
                 // Array will be automatically processed with visualization.arrayToDataTable function
                 chartData: [
                     ['Name', 'Value'],
-                    ['Temperature', 40]
+                    ['Temperature', this.value]
                 ],
                 chartOptions: {
-                        width: 500,
-                        axisTitlesPosition: "none",
-                        labels: "none",
-                        vAxis: {maxValue: 100, minValue: 0},
-                        hAxis: {textPosition: "none"},
-                        legend: {position: "none"},
+
+                    axisTitlesPosition: "none",
+                    labels: "none",
+                    vAxis: {maxValue: this.maxValue, minValue: this.minValue, baseline: this.minValue},
+                    hAxis: {textPosition: "none"},
+                    legend: {position: "none"},
                 }
             }
         }

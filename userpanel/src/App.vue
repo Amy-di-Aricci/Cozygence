@@ -1,6 +1,8 @@
 <template>
   <v-app>
-    <Bargraph/>
+    <v-container fluid style="width: 200px">
+      <Bargraph v-bind:value="20" />
+    </v-container>
   </v-app>
 </template>
 
