@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: "Bargraph",
+        name: "IoteBargraph",
         props:{
             minValue: Number,
             maxValue: Number,
