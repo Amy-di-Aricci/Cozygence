@@ -7,16 +7,11 @@
 </template>
 
 <script>
-    import { GChart } from 'vue-google-charts'
     export default {
         name: "Bargraph",
-        components: {
-            GChart
-        },
         props:{
-            minValue: [Number, String],
-            maxValue: [Number, String],
-            width: [Number, String],
+            minValue: Number,
+            maxValue: Number,
             value: {type: Number, default: 0},
             variableName: String,
         },
@@ -28,7 +23,6 @@
                     ['Temperature', this.value]
                 ],
                 chartOptions: {
-
                     axisTitlesPosition: "none",
                     labels: "none",
                     vAxis: {maxValue: this.maxValue, minValue: this.minValue, baseline: this.minValue},
