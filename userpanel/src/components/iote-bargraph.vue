@@ -30,7 +30,15 @@
                     legend: {position: "none"},
                 }
             }
-        }
+        },
+        methods:{
+
+        },
+        socket:{
+            events:{
+
+            }
+        },
     }
 </script>
 
