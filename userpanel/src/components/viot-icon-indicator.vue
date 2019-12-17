@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: "IoteIconIndicator",
+        name: "VIotIconIndicator",
         props:{
             ok: Boolean,
             warning: Boolean,
