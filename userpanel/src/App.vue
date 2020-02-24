@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <router-view/>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios';
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  name: 'App',
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  data(){
+    return {
+      user:{
+        username: "e.brudzisz@gmail.com",
+        password: "Inzynierk4",
+      },
+      authToken: ""
+    }
+  },
+  computed:{
+  },
+  methods:{
+    async login(){
+        try{
+          this.response = await axios.post('/api/emailSignIn', this.user);
+          if(this.response.status === 200){
+            this.authToken = this.response.data.accessList[0].accessToken;
+            sessionStorage.setItem('token', this.authToken);
+            location.reload();
+          }
+        }
+        catch (e) {
+
+        }
+    },
+  },
+  mounted(){
+    if(!sessionStorage.getItem('token'))
+      this.login();
+  }
+};
+</script>
